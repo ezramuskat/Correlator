@@ -19,19 +19,31 @@
 		</fieldset>
 
 
-          <fieldset class="form-field">
-            {{ form.body.label }}
-            {{ form.body }}
-			{% if form.body.errors %}
+		<fieldset class="form-field">
+			{{ form.description.label }}
+			{{ form.description }}
+			{% if form.description.errors %}
 				<ul class="errors">
 					{% for error in form.body.errors %}
 						<li>{{ error }}</li>
 					{% endfor %}
 				</ul>
-				{% endif %}
-			</fieldset>
+			{% endif %}
+		</fieldset>
 
-          {{ form.submit }}
+		<fieldset class="form-field">
+			{{ form.patterns.label }}
+			{{ form.patterns }}
+			{% if form.patterns.errors %}
+				<ul class="errors">
+					{% for error in form.body.errors %}
+						<li>{{ error }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</fieldset>
+			
+		{{ form.submit }}
 
       </form>
     </div>
