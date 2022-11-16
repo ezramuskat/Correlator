@@ -10,3 +10,4 @@ class Config:
 	TESTING = True
 	DEBUG = True
 	SECRET_KEY = os.environ.get('SECRET_KEY')
+	

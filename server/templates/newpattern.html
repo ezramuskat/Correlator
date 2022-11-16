@@ -4,7 +4,8 @@
 	<div class="form-wrapper">
 		<h2 class="title">Make a new pattern!</h2>
 
-		<form method="POST" action="{{ url_for('pattern') }}">
+		<form method="POST" action="">
+			{{ form.csrf_token }}
 
 		<fieldset class="form-field">
 			{{ form.name.label }}

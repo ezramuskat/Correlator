@@ -8,7 +8,7 @@ def home():
     """Landing page."""
     return render_template(
         'home.html',
-        title="Home page",
+        title="Welcome to Pattern Finder!",
         description="A website to find interesting correlations in data."
     )
 
@@ -17,16 +17,21 @@ def new_pattern():
     """Landing page."""
     form = PatternForm()
     if form.validate_on_submit():
-        return redirect(url_for("pattern"))
+        print("test thing")
+        name = form.name.data
+        return redirect(url_for("pattern", name=name))
+    else:
+        print("other thing")
     return render_template(
         'newpattern.html',
         form=form,
     )
 
 #this url is going to change once we start db/user stuff; for now it'll stay like this
-@app.route("/patterns/sample", methods=["GET", "POST"])
-def pattern():
+@app.route("/patterns/<name>", methods=["GET", "POST"])
+def pattern(name):
     """Landing page."""
     return render_template(
-        'pattern.html'
+        'pattern.html',
+        name=name
     )
