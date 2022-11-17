@@ -1,5 +1,6 @@
 from flask import current_app as app
 from flask import render_template, url_for, redirect
+from .models import Pattern
 
 from .forms import PatternForm
 
@@ -33,5 +34,5 @@ def pattern(name):
     """Landing page."""
     return render_template(
         'pattern.html',
-        name=name
+        pattern = Pattern(name=name, patterns=["bop", "q", "17"], datapoints=["absolutely nothing"])
     )
