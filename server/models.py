@@ -17,16 +17,16 @@ class User(UserMixin, db.Model):
         unique=True,
         nullable=False
     )
+    password = db.Column(
+        db.String(200),
+        index=False,
+        unique=True,
+        nullable=False
+	)
     email = db.Column(
         db.String(80),
         index=True,
         unique=True,
-        nullable=False
-    )
-    created = db.Column(
-        db.DateTime,
-        index=False,
-        unique=False,
         nullable=False
     )
 

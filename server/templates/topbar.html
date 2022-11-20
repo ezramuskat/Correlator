@@ -9,8 +9,8 @@
 {% endblock %}
 
 <div class="topnav">
-	<a href={{url_for('home')}}>Home</a>
-	<a href={{url_for('new_pattern')}}>Find New Patterns</a>
+	<a href={{url_for('main_bp.home')}}>Home</a>
+	<a href={{url_for('main_bp.new_pattern')}}>Find New Patterns</a>
 	<a href="https://example.com">My Patterns</a>
-	<a id="account" style="float:right;" href="https://example.com">My Account</a>
+	<a id="account" style="float:right;" href={{url_for('main_bp.account')}}>My Account</a>
 </div>
