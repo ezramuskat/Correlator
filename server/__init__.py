@@ -15,5 +15,8 @@ def init_app():
 	with app.app_context():
 		# Include our Routes
 		from . import routes
+		from . import auth
+
+		db.create_all()
 
 		return app
