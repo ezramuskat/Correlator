@@ -12,6 +12,7 @@ auth_bp = Blueprint(
 )
 
 
+#login method
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
