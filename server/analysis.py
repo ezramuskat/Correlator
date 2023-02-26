@@ -3,8 +3,6 @@ import sys
 import collections
 
 
-
-
 def findCorrelations(frame: pd.DataFrame, significance: int) -> pd.DataFrame:
 	return frame.corr('pearson', significance, True)
 
