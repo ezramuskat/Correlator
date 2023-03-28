@@ -41,6 +41,7 @@ def pattern(name):
     """Landing page."""
     return render_template(
         'pattern.html',
+        #temp test data; will be replaced with data pulled from db
         pattern = Pattern(name=name, patterns=["bop", "q", "17"], datapoints=["absolutely nothing"])
     )
 

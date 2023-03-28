@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectMultipleField, widgets, PasswordField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
 #based on the example given in wtform's documentation
 #https://wtforms.readthedocs.io/en/3.0.x/specific_problems/
@@ -13,6 +13,12 @@ class MultiCheckboxField(SelectMultipleField):
     """
     widget = widgets.ListWidget(prefix_label=False)
     option_widget = widgets.CheckboxInput()
+
+#validator for multicheckboxfields, ensures that at least one checkbox is selected without requiring that all be selected
+def atleast_one(form, field):
+    """Validate that at least one checkbox is selected."""
+    if len(field.data) < 1:
+        raise ValidationError('Please select at least one pattern.')
 
 class PatternForm(FlaskForm):
     name = StringField(
@@ -29,7 +35,7 @@ class PatternForm(FlaskForm):
     )
     patterns = MultiCheckboxField(
         'Patterns Used',
-        [DataRequired()],
+        [atleast_one],
         choices=[
             ('Correlation', 'Correlation'),
             ('Clusters', 'Clusters')
