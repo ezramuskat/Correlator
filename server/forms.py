@@ -22,7 +22,7 @@ def atleast_one(form, field):
 
 class PatternForm(FlaskForm):
     name = StringField(
-        'Pattern Name',
+        'Pattern Set Name',
         [DataRequired()]
     )
     description = StringField(

@@ -1,7 +1,7 @@
 from flask import current_app as app
 from flask import render_template, url_for, redirect, Blueprint
 from flask_login import current_user, login_required
-from .models import Pattern
+from .models import PatternSet
 
 from .forms import PatternForm
 
@@ -42,7 +42,7 @@ def pattern(name):
     return render_template(
         'pattern.html',
         #temp test data; will be replaced with data pulled from db
-        pattern = Pattern(name=name, patterns=["bop", "q", "17"], datapoints=["absolutely nothing"])
+        patternset = PatternSet(name=name, patterns=["bop", "q", "17"], datapoints=["absolutely nothing"])
     )
 
 @main_bp.route("/account", methods=["GET", "POST"])
