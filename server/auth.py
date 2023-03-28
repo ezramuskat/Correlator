@@ -11,7 +11,7 @@ auth_bp = Blueprint(
     static_folder='static'
 )
 
-
+#login method
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -24,7 +24,7 @@ def login():
         if user and user.check_password(password=form.password.data):
             login_user(user)
             next_page = request.args.get('next')
-            return redirect(next_page or url_for('home'))
+            return redirect(next_page or url_for('main_bp.home'))
         flash('Invalid username/password combination')
         return redirect(url_for('auth_bp.login'))
     return render_template(
