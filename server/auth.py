@@ -15,7 +15,7 @@ auth_bp = Blueprint(
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('main_bp.home'))
 
     form = LoginForm()
     # Validate login attempt
