@@ -26,8 +26,8 @@ def new_pattern():
     form = PatternForm()
     if form.validate_on_submit():
         print("test thing")
-        name = form.name.data
-        return redirect(url_for("main_bp.pattern", name=name))
+        #temp test data for datapoints until we add the logic to the PatternSet class
+        return redirect(url_for("main_bp.pattern_preview", pattern_set = PatternSet(name=form.name.data, patterns=form.patterns.data, datapoints=["absolutely nothing"])))
     else:
         print("other thing")
     return render_template(
@@ -35,14 +35,17 @@ def new_pattern():
         form=form,
     )
 
-#this url is going to change once we start db/user stuff; for now it'll stay like this
-@main_bp.route("/patterns/<name>", methods=["GET", "POST"])
-def pattern(name):
+#this url is used as a preview for the pattern set
+#logged in users can save the pattern set
+#logged out users will still be able to see it
+@main_bp.route("/patterns/<pattern_set>", methods=["GET", "POST"])
+def pattern_preview(pattern_set):
     """Landing page."""
     return render_template(
         'pattern.html',
-        #temp test data; will be replaced with data pulled from db
-        patternset = PatternSet(name=name, patterns=["bop", "q", "17"], datapoints=["absolutely nothing"])
+        
+        patternset = pattern_set
+        #patternset = PatternSet(name=name, patterns=["bop", "q", "17"], datapoints=["absolutely nothing"])
     )
 
 @main_bp.route("/account", methods=["GET", "POST"])
@@ -54,3 +57,4 @@ def account():
         user=current_user,
         body="You are now logged in!"
     )
+
